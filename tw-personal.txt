@@ -1,0 +1,10 @@
+%%!TEX encoding = UTF-8
+scolio:=\pstart\edlabel{#INS#•}#INS#•\pend
+paralleli:=\edtext{}{\Afootnote{{\textbf{\pstartref{#INS#•}}}\enspace #INS#•}}
+fontes:=\edtext{}{\Bfootnote{{\textbf{\pstartref{#INS#•}}}\enspace •#INS#}}
+lectiones:=\edtext{#INS#•}{\Cfootnote[#INS#•]{#INS#•}}
+lemma:=\edtext{#INS#•}{lemma{#INS#•}\Cfootnote[nosep]{#INS#•}}
+marginalia:=\ledsidenote{#INS#•}
+nrlectiones:=\edtext{}{\lemma{\textbf{\pstartref{#INS#•}}}\Cfootnote[nonum,nosep]{#INS#•}}
+greeknumeral:=\greeknumeral{#INS#}
+\super:=\textsuperscript{#INS#}

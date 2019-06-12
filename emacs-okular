@@ -1,0 +1,96 @@
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(TeX-PDF-mode t)
+ '(TeX-source-correlate-method (quote synctex))
+ '(TeX-source-correlate-mode t)
+ '(TeX-source-correlate-start-server t)
+ '(TeX-view-program-list
+   (quote
+    (("pdf-tools" "TeX-pdf-tools-sync-view" "Okular" "xdg-open" "okular --unique %o#src:%n%b"))))
+ '(TeX-view-program-selection
+   (quote
+    (((output-dvi style-pstricks)
+      "dvips and gv")
+     (output-dvi "xdg-open")
+     (output-pdf "Okular")
+     (output-html "xdg-open"))))
+ '(default-input-method "greek-ibycus4")
+ '(doc-view-continuous t)
+ '(scroll-bar-mode (quote right))
+ '(tool-bar-style (quote image)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "DejaVu Sans")))))
+
+;; Line numbers
+(global-linum-mode 1)
+;; Preventing the Creation of Backup Files
+(setq make-backup-files nil)
+;; Abilitare tasto TAB
+(global-set-key (kbd "TAB") 'self-insert-command);
+
+;; Abilita la tastiera ibycus
+(set-input-method "greek-ibycus4")
+
+;; stop asking whether to save newly added abbrev when quitting emacs
+(setq save-abbrevs nil)
+;; turn on abbrev mode globally
+(setq-default abbrev-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Latex for Emacs
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Load auctex (to remove after release in deb format)
+    (load "auctex.el" nil t t)
+    (load "preview-latex.el" nil t t)
+;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Standard emacs/latex config
+;; https://www.emacswiki.org/emacs/AUCTeX
+    (setq TeX-auto-save t)
+    (setq TeX-parse-self t)
+    (setq-default TeX-master nil)
+    
+    (add-hook 'LaTeX-mode-hook 'visual-line-mode)
+    (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+    (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+    (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode )
+
+    (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+    (setq reftex-plug-into-AUCTeX t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Enable synctex correlation
+(setq TeX-source-correlate-mode t)
+(setq TeX-source-correlate-start-server t)
+(setq TeX-source-correlate-method 'auto)
+;;(setq TeX-source-correlate-method 'synctex)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; start emacsclient server to use with Jabref
+(server-start)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; PREDICTIVE MODE
+;; https://www.emacswiki.org/emacs/PredictiveMode
+;; To compile predictive package just install texinfo
+;; predictive install location
+	(add-to-list 'load-path "~/.emacs.d/predictive/")
+;; dictionary locations
+	(add-to-list 'load-path "~/.emacs.d/predictive/latex/")
+	(add-to-list 'load-path "~/.emacs.d/predictive/texinfo/")
+	(add-to-list 'load-path "~/.emacs.d/predictive/html/")
+;; load predictive package
+	(autoload 'predictive-mode "~/.emacs.d/predictive/predictive"
+		"Turn on Predictive Completion Mode." t)
+;; auto-load predictive mode
+;;(add-hook 'LaTeX-mode-hook 'predictive-mode)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
