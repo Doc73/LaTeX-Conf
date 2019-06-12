@@ -7,8 +7,8 @@ Personal conf files for
 
 ## Instructions
 
-* Rename emacs to .emacs and put it in your home directory
+* Rename emacs to `.emacs` and put it in your home directory
 
-* Put tw-personal.txt in $HOME/.TeXworks/completions folder
+* Put `tw-personal.txt` in ``$HOME/.TeXworks/completions`` folder
 
-* Put abbrev_defs in $HOME/.emacs.d folder
+* Put `abbrev_defs` in ``$HOME/.emacs.d`` folder
