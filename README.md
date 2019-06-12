@@ -9,6 +9,6 @@ Personal conf files for
 
 * Rename emacs to `.emacs` and put it in your home directory
 
-* Put `tw-personal.txt` in ``$HOME/.TeXworks/completions`` folder
+* Put `tw-personal.txt` in ``$HOME/.TeXworks/completions/`` folder
 
-* Put `abbrev_defs` in ``$HOME/.emacs.d`` folder
+* Put `abbrev_defs` in ``$HOME/.emacs.d/`` folder
