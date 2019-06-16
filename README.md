@@ -4,6 +4,7 @@ Personal conf files for
 
 1. emacs
 2. TeXworks
+3. journal_abbreviations_annee-philologique
 
 ## Instructions
 
