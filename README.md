@@ -4,7 +4,7 @@ Personal conf files for
 
 1. emacs
 2. TeXworks
-3. Journal Abbreviations list of [L'Année Philologique (APh)](http://www.annee-philologique.com/) 
+3. Journal Abbreviations list of [L'Année Philologique (APh)](http://www.annee-philologique.com/) with some additions
 
 ## Instructions
 
