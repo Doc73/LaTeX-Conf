@@ -11,8 +11,15 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(TeX-command-BibTeX "Biber")
+;; '(TeX-view-program-selection (quote ((output-pdf "xdg-open"))))
  '(doc-view-continuous t)
  '(ebib-bibtex-dialect (quote biblatex))
+ '(ebib-file-associations
+   (quote
+    (("pdf" . "evince")
+     ("ps" . "gv")
+     ("djvu" . "evince"))))
+ '(ebib-file-search-dirs (quote ("/mnt/storage/Dati/Books")))
  '(ebib-preload-bib-files (quote ("Documenti/BibTeX/Bibliografia.bib")))
  '(tex-bibtex-command "biber")
  '(tool-bar-style (quote image)))
@@ -21,11 +28,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- (set-face-attribute 'region nil :background "#666" :foreground "#ffffff")
  )
 
 ;; Line numbers
 (global-linum-mode 1)
+(add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)));
 ;; Preventing the Creation of Backup Files
 (setq make-backup-files nil)
 ;; Abilitare tasto TAB
@@ -70,11 +77,21 @@
 (setq TeX-source-correlate-start-server t)
 (setq TeX-source-correlate-method 'auto)
 ;;(setq TeX-source-correlate-method 'synctex)
+;;(setq TeX-source-correlate-method '((auto) (pdf . synctex)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Enable PDF Tools
-;;(setq TeX-view-program-selection '((output-pdf "PDF Tools")))
+(pdf-tools-install)
+(setq TeX-view-program-selection '((output-pdf "PDF Tools")))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Tell emacs where is your personal elisp lib dir
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+
+;; Reledmac
+(load "critical-keys")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

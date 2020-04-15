@@ -45,4 +45,3 @@
 
 (define-abbrev-table 'text-mode-abbrev-table '())
 
-
